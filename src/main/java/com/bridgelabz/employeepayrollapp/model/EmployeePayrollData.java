@@ -1,6 +1,6 @@
-package com.bridgelabz.employeePayrollApp.model;
+package com.bridgelabz.employeepayrollapp.model;
 
-import com.bridgelabz.employeePayrollApp.dto.EmployeePayrollDTO;
+import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDTO;
 
 public class EmployeePayrollData {
     private int employeeId;

@@ -1,4 +1,4 @@
-package com.bridgelabz.employeePayrollApp.dto;
+package com.bridgelabz.employeepayrollapp.dto;
 
 public class EmployeePayrollDTO {
 
