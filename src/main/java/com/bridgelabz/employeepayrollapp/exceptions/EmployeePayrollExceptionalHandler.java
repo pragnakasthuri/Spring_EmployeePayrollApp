@@ -12,14 +12,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
-    public class EmployeePayrollExceptionalHandler {
-        @ExceptionHandler(MethodArgumentNotValidException.class)
-        public ResponseEntity<ResponseDTO> handleMethodArgumentNotValidException(
-                MethodArgumentNotValidException exception) {
-            List<ObjectError> errorList = exception.getBindingResult().getAllErrors();
-            List<String> errMesg = errorList.stream().map(objErr -> objErr.getDefaultMessage())
-                    .collect(Collectors.toList());
-            ResponseDTO responseDTO = new ResponseDTO("Exception While Processing REST Request", errMesg);
-            return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
-        }
+public class EmployeePayrollExceptionalHandler {
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ResponseDTO> handleMethodArgumentNotValidException(
+            MethodArgumentNotValidException exception) {
+        List<ObjectError> errorList = exception.getBindingResult().getAllErrors();
+        List<String> errMesg = errorList.stream().map(objErr -> objErr.getDefaultMessage())
+                .collect(Collectors.toList());
+        ResponseDTO responseDTO = new ResponseDTO("Exception While Processing REST Request", errMesg);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmployeePayrollException.class)
+    public ResponseEntity<ResponseDTO> handleEmployeePayrollException(
+            EmployeePayrollException exception) {
+        ResponseDTO responseDTO = new ResponseDTO("Exception while Processing REST Request",
+                exception.getMessage());
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
+    }
 }
