@@ -4,6 +4,7 @@ import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDTO;
 import com.bridgelabz.employeepayrollapp.dto.ResponseDTO;
 import com.bridgelabz.employeepayrollapp.model.EmployeePayrollData;
 import com.bridgelabz.employeepayrollapp.service.IEmployeePayrollService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employeepayroll")
+@Slf4j
 public class EmployeePayrollController {
     @Autowired
     private IEmployeePayrollService employeePayrollService;
@@ -55,6 +57,15 @@ public class EmployeePayrollController {
         employeePayrollService.deleteEmployeePayrollData(employeeId);
         ResponseDTO responseDTO = new ResponseDTO("Delete Call Success for id: ", "employeeId "+employeeId);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/department/{department}")
+    public ResponseEntity<ResponseDTO> getEmployeeByDepartment(@PathVariable String department) {
+
+        List<EmployeePayrollData> employeeList = null;
+        employeeList = employeePayrollService.getEmployeeByDepartment(department);
+        ResponseDTO response = new ResponseDTO("Get Call for Department Successful", employeeList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
     }
 }
 
