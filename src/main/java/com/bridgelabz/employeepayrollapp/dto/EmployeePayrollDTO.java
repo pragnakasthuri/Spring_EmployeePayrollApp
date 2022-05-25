@@ -5,6 +5,7 @@ import lombok.ToString;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public @ToString class EmployeePayrollDTO {
@@ -32,6 +33,5 @@ public @ToString class EmployeePayrollDTO {
 
     @NotNull(message = "department should not be empty")
     public List<String> department;
-
 }
 
