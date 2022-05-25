@@ -57,15 +57,4 @@ public @Data class EmployeePayrollData {
         this.profilePic = empPayrollDTO.profilePic;
         this.departments = empPayrollDTO.department;
     }
-
-    public EmployeePayrollData(int employeeId, EmployeePayrollDTO employeePayrollDTO) {
-        this.employeeId = employeeId;
-        this.name = employeePayrollDTO.name;
-        this.salary = employeePayrollDTO.salary;
-        this.gender = employeePayrollDTO.gender;
-        this.startDate = employeePayrollDTO.startDate;
-        this.note = employeePayrollDTO.note;
-        this.profilePic = employeePayrollDTO.profilePic;
-        this.departments = employeePayrollDTO.department;
-    }
 }
