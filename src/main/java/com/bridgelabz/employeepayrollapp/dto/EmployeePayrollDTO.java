@@ -16,12 +16,12 @@ public @ToString class EmployeePayrollDTO {
     @Min(value = 500, message = "Min Wage should be more than 500")
     public long salary;
 
-    @Pattern(regexp = "male|female", message = " Gender  needs to be male or female")
+    @Pattern(regexp = "male|female", message = " Gender needs to be male or female")
     public String gender;
 
     @JsonFormat(pattern = "dd MMM yyyy")
-    @NotNull(message = "Startdate should not be empty")
-    @PastOrPresent(message = "startDate shuld be past or todays date")
+    @NotNull(message = "startDate should not be empty")
+    @PastOrPresent(message = "startDate should be past or today's date")
     public LocalDate startDate;
 
     @NotBlank(message = "Note can not be empty")
